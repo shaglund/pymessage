@@ -9,7 +9,7 @@ app.config.from_object(__name__)
 app.config.update(dict(
     DATABASE=os.path.join(app.root_path, 'messages.db')
 ))
-app.config.from_envvar('MESSAGES_SETTINGS', silent=True)
+app.config.from_envvar('PYMESSAGE_SETTINGS', silent=True)
 
 
 def connect_db():
