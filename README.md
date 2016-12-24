@@ -5,13 +5,13 @@ A sqlite powered simple messaging system built on Flask
 ## Installation
 
 1. Install the app from the root of the project directory
-* pip install --editable .
+  * pip install --editable .
 2. Instruct Flask to use the application
-* export FLASK_APP=pymessage
+  * export FLASK_APP=pymessage
 3. Initialize the database
-* flask initdb
+  * flask initdb
 5. Start the app
-* flask run
+  * flask run
 
 ## Usage
 
