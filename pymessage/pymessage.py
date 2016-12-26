@@ -61,10 +61,10 @@ def send_message(user):
         sql = 'SELECT message, id FROM messages WHERE userId=? AND id BETWEEN ? and ? ORDER BY id'
         cur = db.execute(sql, [userId[0], from_id, to_id])
         ''' Format message(s) as json document '''
-        all_messages = {}
+        all_messages = []
         lastread = userId[1]
         for msg in cur.fetchall():
-            all_messages[msg[1]]=msg[0]
+            all_messages.append({'id': msg[1], 'message': msg[0]})
             lastread = max(lastread, msg[1])
         ''' Update last read item for user '''
         db.execute('UPDATE user SET lastread=? WHERE id=?', [lastread, userId[0]])

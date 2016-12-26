@@ -46,7 +46,8 @@ class PyMessageTestCase(unittest.TestCase):
         ret = self.client.get('/test')
         assert b'application/json' in ret.content_type
         data = json.loads(ret.data)
-        self.assertEqual(data['1'], 'A Test Message')
+        self.assertEqual(data[0]['id'], 1)
+        self.assertEqual(data[0]['message'], 'A Test Message')
 
     def test_send_and_fetch_unread(self):
         ''' Create user '''
@@ -87,7 +88,8 @@ class PyMessageTestCase(unittest.TestCase):
         ret = self.client.get('/test?from=4&to=8')
         data = json.loads(ret.data)
         self.assertEqual(len(data), 5, 'Returned list does not contain 5 items')
-        self.assertEqual(data['6'], 'Test Message 6')
+        self.assertEqual(data[2]['id'], 6)
+        self.assertEqual(data[2]['message'], 'Test Message 6')
 
     def test_delete_message(self):
         self.client.post('/adduser/test')
